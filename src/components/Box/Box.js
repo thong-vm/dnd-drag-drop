@@ -21,12 +21,12 @@ function Box({ object }) {
   });
   return (
     <div
-      className={`border bg-white w-fit m-2 ${
+      className={`border bg-white w-fit m-2 flex justify-center items-center ${
         isDragging ? "opacity-0" : "opacity-100"
       } cursor-move`}
       ref={drag}
     >
-      {object.name}
+      <img className="w-[100px]" src={object.url} alt="" />
     </div>
   );
 }
