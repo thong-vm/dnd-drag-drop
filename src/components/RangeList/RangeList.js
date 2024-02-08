@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import update from "immutability-helper";
 import Card from "../Card/Card";
-function Container() {
+function RangeList() {
   const [cards, setCards] = useState([
     {
       id: 1,
@@ -39,4 +39,4 @@ function Container() {
   return <div>{cards.map((card, index) => renderCard(card, index))}</div>;
 }
 
-export default Container;
+export default RangeList;
