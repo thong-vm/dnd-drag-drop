@@ -20,6 +20,7 @@ function Box({ object, handleRemove }) {
       }
     },
   });
+
   return (
     <div
       className={`w-[100px] h-[100px] border-2 m-2 flex justify-center items-center ${
