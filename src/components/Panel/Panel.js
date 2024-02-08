@@ -34,19 +34,37 @@ function Panel() {
 
   const handleUpdateProgress = useCallback((task) => {
     const updateIndex = progress.indexOf(task);
+    // setProgress((oldProgresses) => {
+    //   return update(oldProgresses, {
+    //     $splice: [[updateIndex, 1]],
+    //   });
+    // });
+
     setProgress((oldProgresses) => {
-      return update(oldProgresses, {
-        $splice: [[updateIndex, 1]],
-      });
+      // Tạo một bản sao của mảng progresses sử dụng spread operator để tránh thay đổi trực tiếp mảng gốc
+      const newProgresses = [...oldProgresses];
+      // Thêm một phần tử mới vào mảng bằng cách sử dụng push
+      newProgresses.push(task);
+      // Trả về mảng mới đã được cập nhật
+      return newProgresses;
     });
   });
 
   const handleUpdateDone = useCallback((task) => {
     const updateIndex = done.indexOf(task);
+    // setDone((oldDone) => {
+    //   return update(oldDone, {
+    //     $splice: [[updateIndex, 1]],
+    //   });
+    // });
     setDone((oldDone) => {
-      return update(oldDone, {
-        $splice: [[updateIndex, 1]],
-      });
+      console.log("oldDone :", oldDone);
+      // Tạo một bản sao của mảng progresses sử dụng spread operator để tránh thay đổi trực tiếp mảng gốc
+      const newDone = [...oldDone];
+      // Thêm một phần tử mới vào mảng bằng cách sử dụng push
+      newDone.push(task);
+      // Trả về mảng mới đã được cập nhật
+      return newDone;
     });
   });
   const progressContainer = {

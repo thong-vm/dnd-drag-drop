@@ -27,8 +27,8 @@ function Container({ object, items, handleRemove }) {
           canDrop && isOver ? "bg-green-200" : canDrop && "bg-red-200"
         } w-[200px] flex flex-col`}
       >
-        {items.map((item) => (
-          <Task handleRemove={handleRemove} object={item} />
+        {items.map((item, index) => (
+          <Task key={index} handleRemove={handleRemove} object={item} />
         ))}
       </div>
     </div>
