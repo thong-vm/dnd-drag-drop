@@ -19,8 +19,8 @@ function ThrowTrash() {
   return (
     <>
       <div className="flex">
-        {trashes.map((trash) => (
-          <Box object={trash} />
+        {trashes.map((trash, index) => (
+          <Box key={index} object={trash} />
         ))}
       </div>
       <div className="w-full  flex justify-center">
