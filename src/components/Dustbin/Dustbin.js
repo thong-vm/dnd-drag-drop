@@ -1,6 +1,6 @@
 import { useDrop } from "react-dnd";
 
-function Dustbin() {
+function Dustbin({ object }) {
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: "Trash",
     collect(monitor) {
@@ -14,17 +14,20 @@ function Dustbin() {
       };
     },
     drop() {
-      return { name: "Dustbin" };
+      return object;
     },
   });
   return (
-    <div
-      ref={drop}
-      className={`${
-        canDrop && isOver ? "bg-green-200" : canDrop && "bg-red-500"
-      } w-[200px] h-[200px] bg-slate-400`}
-    >
-      {canDrop && isOver ? "Ok right !" : canDrop && "Drop here !"}
+    <div>
+      <h2>{object.name}</h2>
+      <div
+        ref={drop}
+        className={`${
+          canDrop && isOver ? "bg-green-200" : canDrop && "bg-red-500"
+        } w-[200px] h-[200px] bg-slate-400 rounded-full flex justify-center items-center`}
+      >
+        {canDrop && isOver ? "Ok right !" : canDrop && "Drop here !"}
+      </div>
     </div>
   );
 }

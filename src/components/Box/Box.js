@@ -1,6 +1,6 @@
 import { useDrag } from "react-dnd";
 
-function Box({ object }) {
+function Box({ object, handleRemove }) {
   const [{ isDragging }, drag] = useDrag({
     type: "Trash",
     //đây là item đang được kéo
@@ -16,17 +16,18 @@ function Box({ object }) {
       const dropResult = monitor.getDropResult();
       if (item && dropResult) {
         alert(`You dropped ${item.object.name} into ${dropResult.name}!`);
+        handleRemove(item.object);
       }
     },
   });
   return (
     <div
-      className={`border bg-white w-fit m-2 flex justify-center items-center ${
+      className={`w-[100px] h-[100px] border-2 m-2 flex justify-center items-center ${
         isDragging ? "opacity-0" : "opacity-100"
       } cursor-move`}
       ref={drag}
     >
-      <img className="w-[100px]" src={object.url} alt="" />
+      <img className="w-full h-full object-fill" src={object.url} alt="" />
     </div>
   );
 }
